@@ -1,7 +1,6 @@
 # (c) Samuel Leslie. All rights reserved.
 # https://github.com/ralish/PSWinGlue
 # Licensed under MIT
-
 Function Install-Font {
     <#
         .Synopsis
@@ -55,9 +54,13 @@ Function Install-Font {
     $ShellApp = New-Object -ComObject Shell.Application
     $FontsFolder = $ShellApp.NameSpace($ShellAppFontNamespace)
     foreach ($Font in $Fonts) {
-        Write-Host $Font;
+        Write-Host $Font
 
         Write-Verbose -Message ('Installing font: {0}' -f $Font.BaseName)
         $FontsFolder.CopyHere($Font.FullName)
     }
 }
+
+Write-Host "Installing fonts..."
+$FontPath = Join-Path $PSScriptRoot "HackRegularNerdFontCompleteMonoWindowsCompatible.ttf"
+Install-Font -FontPath $FontPath

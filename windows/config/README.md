@@ -11,12 +11,12 @@ Don't run this before cloning the machine repository properly.
 
 To install, run the following script from an administrator PowerShell prompt:
 
-```
-> .\Install.ps1 -PowerShellProfile -WindowsTerminalProfile -StarshipProfile -Fonts -Force
+```powershell
+> .\Install.ps1 -PowerShellProfile -WindowsTerminalProfile -StarshipProfile -Fonts
 ```
 
 Or, to install everything:
 
-```
+```powershell
 > .\Install.ps1 -All
 ```

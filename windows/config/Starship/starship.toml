@@ -1,0 +1,57 @@
+add_newline = false
+
+[character]
+symbol.value = "λ"
+error_symbol = "[X] λ"
+use_symbol_for_status = true
+style_success = "bold green"
+style_failure = "bold red"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+style = "bold blue"
+
+[dotnet]
+symbol = "[.NET] "
+style = "dimmed blue"
+heuristic = true
+
+[git_branch]
+symbol = " "
+style = "bold green"
+
+[git_status]
+disabled = false
+show_sync_count = true
+prefix = "["
+suffix = "]"
+style = "bold blue"
+conflicted.value = "🏳"
+conflicted.style = "red"
+conflicted_count.enabled = true
+conflicted_count.style = "red"
+deleted.value = "x"
+deleted.style = "red"
+deleted_count.enabled = true
+deleted_count.style = "red"
+modified.value = "≈"
+modified.style = "yellow"
+modified_count.enabled = true
+modified_count.style = "yellow"
+stashed_count.enabled = true
+staged.value = "+"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed.value = "⇄"
+renamed.style = "yellow"
+renamed_count.enabled = true
+renamed_count.style = "yellow"
+untracked.value = "?"
+untracked.style = "white"
+untracked_count.enabled = true
+untracked_count.style = "white"
+
+[cmd_duration]
+prefix = " | took "

@@ -1,4 +1,5 @@
-$Global:SourceLocation = "<<SOURCELOCATION>>"
+$Global:RootSourceLocation = "<<SRCROOTLOCATION>>"
+$Global:GitHubSourceLocation = "<<GITHUBLOCATION>>"
 $Global:AzureDevOpsSourceLocation = "<<AZURELOCATION>>"
 $Global:BitBucketSourceLocation = "<<BITBUCKETLOCATION>>"
 $Global:GitLabSourceLocation = "<<GITLABLOCATION>>"
@@ -6,10 +7,10 @@ $Global:GitLabSourceLocation = "<<GITLABLOCATION>>"
 # Load the profile
 . "<<PROFILE>>"
 
-Enter-GitHubLocation
+Enter-AzureDevOpsLocation
 Clear-Host
 
-# Load Posh-git
+# Load posh-git
 $Global:PoshGitInstalled = (Get-Module -ListAvailable -Name posh-git)
 if ($Global:PoshGitInstalled) {
     Write-Host "Initializing posh-git... " -NoNewline
@@ -20,6 +21,17 @@ else {
     Write-Host "The posh-git module has not been installed." -ForegroundColor Red
 }
 
+# Load posh-docker
+$Global:PoshDockerInstalled = (Get-Module -ListAvailable -Name posh-docker)
+if ($Global:PoshDockerInstalled) {
+    Write-Host "Initializing posh-docker... " -NoNewline
+    Import-Module posh-docker
+    Write-Host "Done!" -ForegroundColor Green
+}
+else {
+    Write-Host "The posh-docker module has not been installed." -ForegroundColor Red
+}
+
 $Global:LOCALPROFILE = "<<LOCALPROFILE>>"
 if (Test-Path $Global:LOCALPROFILE) {
     Write-Host "Initializing local profile... " -NoNewline
@@ -27,11 +39,11 @@ if (Test-Path $Global:LOCALPROFILE) {
     Write-Host "Done!" -ForegroundColor Green
 }
 
-if(Test-Arm -or $null -ne $env:PREFER_OLD_PROMPT) {
+if($null -ne $env:PREFER_OLD_PROMPT) {
     . "<<PROMPT>>"
 } else {
     # Initialize Starship
-    $StarshipVersion = starship --version;
+    $StarshipVersion = starship --version
     if ($null -ne $StarshipVersion -and $StarshipVersion -ne "") {
         Write-Host "Initializing Starship... " -NoNewline
         Invoke-Expression (&starship init powershell)

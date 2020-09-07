@@ -5,30 +5,37 @@
 Disable-UAC
 
 ##########################################################################
+# Create temporary directory
+##########################################################################
+
+# Workaround choco / boxstarter path too long error
+# https://github.com/chocolatey/boxstarter/issues/241
+$ChocoCachePath = "$env:USERPROFILE\AppData\Local\Temp\chocolatey"
+New-Item -Path $ChocoCachePath -ItemType Directory -Force
+
+##########################################################################
 # Running in Windows Sandbox?
 ##########################################################################
 
 if ($env:UserName -eq "WDAGUtilityAccount") {
-    Write-Host "Sorry, can't install Ubuntu in a Windows Sandbox.";
-    Return;
+    Write-Host "Sorry, can't install Ubuntu in a Windows Sandbox."
+    Return
 }
 
 ##########################################################################
 # Install Ubuntu
 ##########################################################################
 
-# Make sure WSL 2 is the default architecture
-wsl --set-default-version 2
+choco upgrade --cache="$ChocoCachePath" --yes wsl2
+choco upgrade --cache="$ChocoCachePath" --yes wsl-ubuntu-2004 --params "/InstallRoot:true"
+choco upgrade --cache="$ChocoCachePath" --yes docker-desktop --pre
 
 # Install Ubuntu
-Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1804 -OutFile ~/Downloads/Ubuntu.appx -UseBasicParsing
-Add-AppxPackage -Path ~/Downloads/Ubuntu.appx
 RefreshEnv
 
 # Update Ubuntu
-Ubuntu1804 install --root
-Ubuntu1804 run apt-get update -y
-Ubuntu1804 run apt-get upgrade -y
+wsl -d Ubuntu-20.04 -u root apt-get update -y
+wsl -d Ubuntu-20.04 -u root apt-get upgrade -y
 
 ##########################################################################
 # Restore Temporary Settings

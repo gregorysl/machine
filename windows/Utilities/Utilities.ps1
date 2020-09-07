@@ -6,16 +6,16 @@ Function Assert-Administrator([string]$FailMessage) {
 }
 
 Function Assert-CommandExists([string]$CommandName) {
-    $Old = $ErrorActionPreference;
+    $Old = $ErrorActionPreference
     try {
-        $ErrorActionPreference = "stop";
+        $ErrorActionPreference = "stop"
         if (Get-Command $CommandName) {
-            Return $true;
+            Return $true
         }
-        Return $false;
+        Return $false
     } catch {
-        Return $false;
+        Return $false
     } finally {
-        $ErrorActionPreference = $Old;
+        $ErrorActionPreference = $Old
     }
 }

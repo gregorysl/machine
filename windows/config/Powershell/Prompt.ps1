@@ -1,6 +1,6 @@
 ﻿# Wrap the prompt by default
-$Global:WrapPrompt = $true;
-$Global:WindowTitle = $null;
+$Global:WrapPrompt = $true
+$Global:WindowTitle = $null
 
 # Load PoSh-Git
 $Global:PoShGitInstalled = (Get-Module -ListAvailable -Name posh-git)
@@ -18,12 +18,12 @@ Function Global:Prompt() {
         $previousY = $host.UI.RawUI.CursorPosition.Y - 1
         $rect = New-Object System.Management.Automation.Host.Rectangle(0, $previousY, $host.UI.RawUI.BufferSize.Width, $previousY)
         $content = $host.UI.RawUI.GetBufferContents($rect)
-        $writeNewLine = $false;
+        $writeNewLine = $false
         for ($i = 0; $i -lt $host.UI.RawUI.BufferSize.Width; $i++) {
             $character = $content[$i, 0].Character
             if ($character -ne ' ' -and $null -ne $character) {
-                $writeNewLine = $true;
-                break;
+                $writeNewLine = $true
+                break
             }
         }
         if ($writeNewLine) {
@@ -65,7 +65,7 @@ Function Global:Prompt() {
     # Prompt
     $windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $windowsPrincipal = new-object 'System.Security.Principal.WindowsPrincipal' $windowsIdentity
-    $IsAdministrator = $windowsPrincipal.IsInRole("Administrators") -eq 1;
+    $IsAdministrator = $windowsPrincipal.IsInRole("Administrators") -eq 1
     $PromptColor = if ($IsAdministrator) {[ConsoleColor]::Red} Else {[ConsoleColor]::Green}
     Write-Host (get-date).ToString('HH:mm:ss') -n -f DarkYellow
     Write-Host " " -n
@@ -75,11 +75,11 @@ Function Global:Prompt() {
     if ($null -eq $Global:WindowTitle) {
         $CurrentPath = $pwd.ProviderPath
         $CustomWindowTitle = if ($IsAdministrator) {"[Admin] " + $CurrentPath} Else {$CurrentPath}
-        $host.UI.RawUI.WindowTitle = $CustomWindowTitle;
+        $host.UI.RawUI.WindowTitle = $CustomWindowTitle
     }
     else {
         $CustomWindowTitle = if ($IsAdministrator) {"[Admin] " + $Global:WindowTitle} Else {$Global:WindowTitle}
-        $host.UI.RawUI.WindowTitle = $CustomWindowTitle;
+        $host.UI.RawUI.WindowTitle = $CustomWindowTitle
     }
 
     $global:LASTEXITCODE = $REALLASTEXITCODE

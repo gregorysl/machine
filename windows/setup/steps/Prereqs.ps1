@@ -5,16 +5,6 @@
 Disable-UAC
 
 ##########################################################################
-# Utility stuff
-##########################################################################
-
-$Architecture = (Get-WmiObject Win32_OperatingSystem).OSArchitecture;
-$IsArm = $false;
-if($Architecture.StartsWith("ARM")) {
-    $IsArm = $true;
-}
-
-##########################################################################
 # Create temporary directory
 ##########################################################################
 
@@ -30,20 +20,15 @@ New-Item -Path $ChocoCachePath -ItemType Directory -Force
 if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
     choco install --cache="$ChocoCachePath" --yes Microsoft-Windows-Subsystem-Linux -source windowsfeatures
     choco install --cache="$ChocoCachePath" --yes VirtualMachinePlatform -source windowsfeatures
-
-    if(!$IsArm) {
-        choco install --cache="$ChocoCachePath" --yes Microsoft-Hyper-V-All -source windowsFeatures
-    }
+    choco install --cache="$ChocoCachePath" --yes Microsoft-Hyper-V-All -source windowsFeatures
 }
 
 ##########################################################################
 # Install Windows Sandbox
 ##########################################################################
 
-if(!$IsArm) { # Can't install Windows Sandbox on ARM devices
-    if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
-        Enable-WindowsOptionalFeature -FeatureName "Containers-DisposableClientVM" -All -Online
-    }
+if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
+    Enable-WindowsOptionalFeature -FeatureName "Containers-DisposableClientVM" -All -Online
 }
 
 ##########################################################################
@@ -55,14 +40,17 @@ Disable-GameBarTips
 
 Set-ItemProperty -Path "HKLM:SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Type DWord -Value 1
 Set-WindowsExplorerOptions -EnableShowFileExtensions
-Set-TaskbarOptions -Size Large -Dock Bottom -Combine Full -Lock
+Set-TaskbarOptions -Size Large -Dock Bottom -Combine Always -Lock
+Set-TaskbarOptions -AlwaysShowIconsOff
 
 ##########################################################################
 # Power settings
 ##########################################################################
 
-powercfg /change monitor-timeout-ac 0 # Don't turn off monitor
-powercfg /change standby-timeout-ac 0 # Don't ever sleep
+if($env:UserName -ne "WDAGUtilityAccount") { # Can't configure this on Sandbox
+    powercfg /change monitor-timeout-ac 0 # Don't turn off monitor
+    powercfg /change standby-timeout-ac 0 # Don't ever sleep
+}
 
 ##########################################################################
 # Uninstall bloatware
@@ -81,7 +69,6 @@ Get-AppxPackage Microsoft.SkypeApp | Remove-AppxPackage
 Get-AppxPackage Microsoft.Microsoft3DViewer | Remove-AppxPackage
 Get-AppxPackage Microsoft.MixedReality.Portal | Remove-AppxPackage
 Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
-Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage
 Get-AppxPackage Microsoft.MSPaint | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
 
@@ -122,7 +109,7 @@ Set-ItemProperty -Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
 
 # Disable the Lock Screen (the one before password prompt - to prevent dropping the first character)
 If (-Not (Test-Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization)) {
-	New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows -Name Personalization | Out-Null
+    New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows -Name Personalization | Out-Null
 }
 Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization -Name NoLockScreen -Type DWord -Value 1
 

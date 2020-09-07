@@ -1,0 +1,13 @@
+{
+  "autoStart": true,
+  "checkForUpdates": false,
+  "analyticsEnabled": false,
+  "dataFolder": "C:\\ProgramData\\DockerDesktop\\vm-data",
+  "kubernetesEnabled": true,
+  "useWindowsContainers": false,
+  "wslEngineEnabled": true,
+  "integratedWslDistros": [ "Ubuntu-20.04" ],
+  "enableIntegrationWithDefaultWslDistro": true,
+  "skipUpdateToWSLPrompt": true,
+  "skipWSLMountPerfWarning": true
+}
