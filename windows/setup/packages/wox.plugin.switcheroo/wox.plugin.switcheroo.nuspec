@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>wox.plugin.switcheroo</id>
+    <version>1.0.9</version>
+    <title>Switcheroo for Wox</title>
+    <description>The humble incremental-search task switcher for Wox</description>
+    <authors>Wox</authors>
+    <owners>SheGe</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://raw.githubusercontent.com/Wox-launcher/Wox.Plugin.Switcheroo/master/Wox.Plugin.Switcheroo/Images/switcheroo.png</iconUrl>
+    <projectUrl>https://github.com/Wox-launcher/Wox.Plugin.Switcheroo</projectUrl>
+    <docsUrl>http://doc.wox.one/en/</docsUrl>
+    <bugTrackerUrl>https://github.com/Wox-launcher/Wox.Plugin.Switcheroo/issues</bugTrackerUrl>
+    <summary>Wox</summary>
+    <releaseNotes></releaseNotes>
+    <tags>wox plugin</tags>
+  </metadata>
+  <dependencies>
+    <dependency id="wox.install" />
+  </dependencies>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

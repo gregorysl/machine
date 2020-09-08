@@ -13,7 +13,9 @@ Param(
     [Parameter(ParameterSetName='Granular')]
     [switch]$Docker,
     [Parameter(ParameterSetName='Granular')]
-    [switch]$VSCode
+    [switch]$VSCode,
+    [Parameter(ParameterSetName='Granular')]
+    [switch]$Wox
 )
 
 . (Join-Path $PSScriptRoot "../utilities/Utilities.ps1")
@@ -21,7 +23,7 @@ Param(
 # Nothing selected? Show help screen.
 if (!$PowerShellProfile.IsPresent -and !$Fonts.IsPresent -and !$WindowsTerminalProfile.IsPresent `
     -and !$StarshipProfile.IsPresent -and !$Docker.IsPresent -and !$VSCode.IsPresent `
-    -and !$All.IsPresent)
+    -and !$Wox.IsPresent -and !$All.IsPresent)
 {
     Get-Help (Join-Path $PSScriptRoot "Install.ps1")
     Exit
@@ -77,4 +79,13 @@ if($All.IsPresent -or $Docker.IsPresent) {
 if($All.IsPresent -or $VSCode.IsPresent) {
     Assert-Administrator -FailMessage "Installing VsCode settings requires administrator privilegies."
     . (Join-Path $PSScriptRoot "VSCode/Configure.ps1")
+}
+
+#################################################################
+# WOX
+#################################################################
+
+if($All.IsPresent -or $Wox.IsPresent) {
+    Assert-Administrator -FailMessage "Installing Wox settings requires administrator privilegies."
+    . (Join-Path $PSScriptRoot "Wox/Configure.ps1")
 }

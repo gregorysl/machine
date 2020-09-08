@@ -95,9 +95,19 @@ choco upgrade --cache="$ChocoCachePath" --yes steam
 choco upgrade --cache="$ChocoCachePath" --yes tidal
 choco upgrade --cache="$ChocoCachePath" --yes vlc --params "/Language:en"
 
-##########################################################################
-# Disable startup
-##########################################################################
+# ------------------------------------------------------------------------
+# Local
+# ------------------------------------------------------------------------
+$localPackagesSource = "$PSScriptRoot\..\packages\source"
+New-Item -Path $localPackagesSource -ItemType Directory -Force
+choco pack "$PSScriptRoot\..\packages\wox.install\wox.install.nuspec" -f -out $localPackagesSource
+choco pack "$PSScriptRoot\..\packages\wox.plugin.switcheroo\wox.plugin.switcheroo.nuspec" -f -out $localPackagesSource
+
+# Installing Wox and switcheroo plugin from local package is required because:
+# - Wox package from choco repository is installing Python and Everywhere dependency
+# - There is no official way for installing wox plugins
+choco upgrade --cache="$ChocoCachePath" --yes wox.install -s $localPackagesSource
+choco upgrade --cache="$ChocoCachePath" --yes wox.plugin.switcheroo -s $localPackagesSource
 
 ##########################################################################
 # Install VSCode extensions

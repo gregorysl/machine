@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>wox.install</id>
+    <version>1.4.1196</version>
+    <title>Wox</title>
+    <description>Wox - a launcher for windows</description>
+    <authors>Wox</authors>
+    <owners>SheGe</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://raw.githubusercontent.com/Wox-launcher/Wox/master/Wox/Resources/app.ico</iconUrl>
+    <projectUrl>https://github.com/Wox-launcher/Wox</projectUrl>
+    <docsUrl>http://doc.wox.one/en/</docsUrl>
+    <bugTrackerUrl>https://github.com/Wox-launcher/Wox/issues</bugTrackerUrl>
+    <summary>Wox</summary>
+    <releaseNotes></releaseNotes>
+    <tags>wox launcher</tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

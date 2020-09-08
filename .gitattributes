@@ -4,3 +4,4 @@
 *.toml          text eol=lf
 *.json          text eol=lf
 *.json.override text eol=lf
+*.nuspec        text eol=crlf
