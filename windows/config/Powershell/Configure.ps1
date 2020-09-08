@@ -24,6 +24,9 @@ New-SourcesDirectory -Path $Script:BitBucketSourceLocation | Out-Null
 New-SourcesDirectory -Path $Script:GitLabSourceLocation | Out-Null
 
 Write-Host "Adding PowerShell profile..."
+if (-not (Test-Path -Path $PROFILE)) {
+    New-Item -Path $PROFILE -ItemType File | Out-Null
+}
 $PowerShellProfileTemplatePath = Join-Path $PSScriptRoot "Profile.template"
 $PowerShellProfilePath = (Join-Path $PSScriptRoot "Roaming.ps1")
 $PowerShellPromptPath = (Join-Path $PSScriptRoot "Prompt.ps1")
