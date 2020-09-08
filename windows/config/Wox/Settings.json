@@ -19,7 +19,7 @@
   "WindowLeft": 400.0,
   "WindowTop": 206.0,
   "MaxResultsToShow": 6,
-  "ActivateTimes": 45,
+  "ActivateTimes": 1,
   "CustomPluginHotkeys": [],
   "Opacity": 1.0,
   "OpacityMode": 0,
@@ -31,7 +31,7 @@
   "LeaveCmdOpen": false,
   "HideWhenDeactive": true,
   "RememberLastLaunchLocation": false,
-  "IgnoreHotkeysOnFullscreen": false,
+  "IgnoreHotkeysOnFullscreen": true,
   "Proxy": {
     "Enabled": false,
     "Server": null,
