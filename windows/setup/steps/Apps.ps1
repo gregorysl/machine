@@ -121,7 +121,7 @@ code --install-extension ban.spellright
 
 code --install-extension DotJoshJohnson.xml
 code --install-extension eriklynd.json-tools
-code --install-extension ibe5invis.toml
+code --install-extension be5invis.toml
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-vscode.powershell
 
