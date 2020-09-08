@@ -31,7 +31,7 @@ if ($Prereqs.IsPresent) {
     RefreshEnv
 }
 if ($Apps.IsPresent) {
-    Install-BoxstarterPackage (Join-Path $PSScriptRoot "Steps/Apps.ps1") -DisableReboots
+    Install-BoxstarterPackage (Join-Path $PSScriptRoot "Steps/Apps.ps1")
     RefreshEnv
 }
 if ($Docker.IsPresent) {
