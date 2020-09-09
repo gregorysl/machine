@@ -7,7 +7,10 @@ $Global:GitLabSourceLocation = "<<GITLABLOCATION>>"
 # Load the profile
 . "<<PROFILE>>"
 
-Enter-AzureDevOpsLocation
+$CurrentDir = $(Get-Location).Path
+if ($CurrentDir -eq $env:USERPROFILE -or $CurrentDir -eq (Join-Path $env:windir "System32")) {
+    Enter-AzureDevOpsLocation
+}
 Clear-Host
 
 # Load posh-git

@@ -30,7 +30,8 @@
         "backgroundImage": "%WINDOWSTERMINAL_IMAGES%/powershell_core.png",
         "backgroundImageAlignment": "bottomRight",
         "backgroundImageStretchMode": "none",
-        "backgroundImageOpacity": 0.25
+        "backgroundImageOpacity": 0.25,
+        "startingDirectory": "%__CD__%"
       },
       {
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -40,7 +41,8 @@
         "backgroundImage": "%WINDOWSTERMINAL_IMAGES%/powershell.png",
         "backgroundImageAlignment": "bottomRight",
         "backgroundImageStretchMode": "none",
-        "backgroundImageOpacity": 0.25
+        "backgroundImageOpacity": 0.25,
+        "startingDirectory": "%__CD__%"
       },
       {
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
