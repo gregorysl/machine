@@ -32,6 +32,7 @@ if ($Prereqs.IsPresent) {
 }
 if ($Apps.IsPresent) {
     Install-BoxstarterPackage (Join-Path $PSScriptRoot "Steps/Apps.ps1")
+    . (Join-Path $PSScriptRoot "packages/Install.ps1")
     RefreshEnv
 }
 if ($Docker.IsPresent) {
