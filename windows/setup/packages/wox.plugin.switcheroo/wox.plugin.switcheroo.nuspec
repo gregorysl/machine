@@ -16,10 +16,10 @@
     <summary>Wox</summary>
     <releaseNotes></releaseNotes>
     <tags>wox plugin</tags>
+    <dependencies>
+        <dependency id="wox.install" />
+    </dependencies>
   </metadata>
-  <dependencies>
-    <dependency id="wox.install" />
-  </dependencies>
   <files>
     <file src="tools\**" target="tools" />
   </files>
