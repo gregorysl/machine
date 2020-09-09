@@ -65,6 +65,7 @@ choco upgrade --cache="$ChocoCachePath" --yes curl
 choco upgrade --cache="$ChocoCachePath" --yes cmake.portable
 choco upgrade --cache="$ChocoCachePath" --yes chocolateygui --params "/ShowConsoleOutput=$true /UseDelayedSearch=$false /OutdatedPackagesCacheDurationInMinutes=120 /DefaultToTileViewForLocalSource"
 choco upgrade --cache="$ChocoCachePath" --yes gsudo
+choco upgrade --cache="$ChocoCachePath" --yes k9s
 choco upgrade --cache="$ChocoCachePath" --yes keepassxc
 choco upgrade --cache="$ChocoCachePath" --yes multicommander
 choco upgrade --cache="$ChocoCachePath" --yes nugetpackageexplorer
