@@ -31,7 +31,7 @@ choco upgrade --cache="$ChocoCachePath" --yes git-fork
 choco upgrade --cache="$ChocoCachePath" --yes microsoft-windows-terminal
 choco upgrade --cache="$ChocoCachePath" --yes starship
 choco upgrade --cache="$ChocoCachePath" --yes azure-cli
-
+choco upgrade --cache="$ChocoCachePath" --yes kubernetes-cli
 
 # ------------------------------------------------------------------------
 # Communication
