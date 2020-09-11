@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>semanticmerge.install</id>
+    <version>2.0.152.0</version>
+    <title>Semantic Merge</title>
+    <description>The download url is an unversioned permalink, and hence will always be the latest version, even if the version
+of this package is not updated.
+
+Please see the documentation at http://www.semanticmerge.com/documents/semanticmerge-intro-guide.pdf</description>
+    <authors>Plasic SCM</authors>
+    <owners>SheGe</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://github.com/Iristyle/ChocolateyPackages/raw/master/SemanticMerge/logo-semantic-merge.png</iconUrl>
+    <summary>Semantic Merge - The ultimate merging machine.  A semantic merge tool... that understands your code.</summary>
+    <releaseNotes></releaseNotes>
+    <tags>sourcecode merge tool dvcs git</tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
