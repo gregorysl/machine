@@ -1,0 +1,40 @@
+# This is Git's per-user configuration file.
+[user]
+	name = SheGe
+	email = szymon.sito@hotmail.com
+
+[diff]
+	tool = semanticdiff
+
+[difftool "semanticdiff"]
+	cmd = $HOME/AppData/Local/semanticmerge/semanticmergetool.exe -s \"$LOCAL\" -d \"$REMOTE\"
+
+[difftool]
+	prompt = false
+
+[merge]
+	tool = semanticmerge
+
+[mergetool "semanticmerge"]
+	cmd = $HOME/AppData/Local/semanticmerge/semanticmergetool.exe -d \"$LOCAL\" -s \"$REMOTE\" -b \"$BASE\" -r \"$MERGED\"
+	trustExitCode = true
+
+[mergetool]
+	prompt = false
+	keepBackup = false
+
+# Custom aliases
+[alias]
+	log-graph-all = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n            %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all --invert-grep --grep='Notes added'
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+[core]
+	autocrlf = false
+
+[credential]
+	helper = wincred

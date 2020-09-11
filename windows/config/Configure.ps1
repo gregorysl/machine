@@ -15,7 +15,9 @@ Param(
     [Parameter(ParameterSetName='Granular')]
     [switch]$VSCode,
     [Parameter(ParameterSetName='Granular')]
-    [switch]$Wox
+    [switch]$Wox,
+    [Parameter(ParameterSetName='Granular')]
+    [switch]$Git
 )
 
 . (Join-Path $PSScriptRoot "../utilities/Utilities.ps1")
@@ -23,7 +25,7 @@ Param(
 # Nothing selected? Show help screen.
 if (!$PowerShellProfile.IsPresent -and !$Fonts.IsPresent -and !$WindowsTerminalProfile.IsPresent `
     -and !$StarshipProfile.IsPresent -and !$Docker.IsPresent -and !$VSCode.IsPresent `
-    -and !$Wox.IsPresent -and !$All.IsPresent)
+    -and !$Wox.IsPresent -and !$Git.IsPresent -and !$All.IsPresent)
 {
     Get-Help (Join-Path $PSScriptRoot "Install.ps1")
     Exit
@@ -88,4 +90,12 @@ if($All.IsPresent -or $VSCode.IsPresent) {
 if($All.IsPresent -or $Wox.IsPresent) {
     Assert-Administrator -FailMessage "Installing Wox settings requires administrator privilegies."
     . (Join-Path $PSScriptRoot "Wox/Configure.ps1")
+}
+
+#################################################################
+# Git
+#################################################################
+if($All.IsPresent -or $Git.IsPresent) {
+    Assert-Administrator -FailMessage "Installing Git config requires administrator privilegies."
+    . (Join-Path $PSScriptRoot "Git/Configure.ps1")
 }
