@@ -27,8 +27,7 @@ if ($env:UserName -eq "WDAGUtilityAccount") {
 ##########################################################################
 
 choco upgrade --cache="$ChocoCachePath" --yes wsl2
-choco upgrade --cache="$ChocoCachePath" --yes wsl-ubuntu-2004
-ubuntu2004.exe install --root
+choco upgrade --cache="$ChocoCachePath" --yes wsl-ubuntu-2004 --params "/InstallRoot:true"
 choco upgrade --cache="$ChocoCachePath" --yes docker-desktop --pre
 
 # Install Ubuntu
