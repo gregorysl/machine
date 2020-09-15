@@ -26,7 +26,7 @@
   "DontPromptUpdateMsg": false,
   "EnableUpdateLog": false,
   "StartWoxOnSystemStartup": true,
-  "HideOnStartup": false,
+  "HideOnStartup": true,
   "HideNotifyIcon": false,
   "LeaveCmdOpen": false,
   "HideWhenDeactive": true,
