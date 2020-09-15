@@ -71,6 +71,7 @@ choco upgrade --cache="$ChocoCachePath" --yes multicommander
 choco upgrade --cache="$ChocoCachePath" --yes nugetpackageexplorer
 choco upgrade --cache="$ChocoCachePath" --yes openvpn --params "'/SELECT_OPENVPN=1 /SELECT_OPENVPNGUI=1 /SELECT_TAP=1 /SELECT_EASYRSA=1 /SELECT_SERVICE=0 /SELECT_OPENSSL_UTILITIES=1 /SELECT_SHORTCUTS=0 /SELECT_ASSOCIATIONS=1 /SELECT_LAUNCH=1'"
 choco upgrade --cache="$ChocoCachePath" --yes paint.net
+choco upgrade --cache="$ChocoCachePath" --yes setpoint
 choco upgrade --cache="$ChocoCachePath" --yes sysinternals
 choco upgrade --cache="$ChocoCachePath" --yes winscp.portable
 
