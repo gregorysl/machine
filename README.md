@@ -1,4 +1,4 @@
-# SheGe's configurations
+# gregorysl's configurations
 
 This repository contains my personal configurations for
 things like Windows, Linux, my terminals etc. I will
