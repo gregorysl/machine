@@ -17,7 +17,8 @@ New-Item -Path $ChocoCachePath -ItemType Directory -Force
 # Enable Windows subsystem for Linux
 ##########################################################################
 
-if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
+if ($env:UserName -ne "WDAGUtilityAccount") {
+    # Can't install this on Sandbox
     choco install --cache="$ChocoCachePath" --yes Microsoft-Windows-Subsystem-Linux -source windowsfeatures
     choco install --cache="$ChocoCachePath" --yes VirtualMachinePlatform -source windowsfeatures
     choco install --cache="$ChocoCachePath" --yes Microsoft-Hyper-V-All -source windowsFeatures
@@ -27,7 +28,8 @@ if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
 # Install Windows Sandbox
 ##########################################################################
 
-if($env:UserName -ne "WDAGUtilityAccount") { # Can't install this on Sandbox
+if ($env:UserName -ne "WDAGUtilityAccount") {
+    # Can't install this on Sandbox
     Enable-WindowsOptionalFeature -FeatureName "Containers-DisposableClientVM" -All -Online
 }
 
@@ -39,15 +41,16 @@ Disable-BingSearch
 Disable-GameBarTips
 
 Set-ItemProperty -Path "HKLM:SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Type DWord -Value 1
-Set-WindowsExplorerOptions -EnableShowFileExtensions
-Set-TaskbarOptions -Size Large -Dock Bottom -Combine Always -Lock
-Set-TaskbarOptions -AlwaysShowIconsOff
+Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowHiddenFilesFoldersDrives -EnableShowFullPathInTitleBar 
+Set-BoxstarterTaskbarOptions -Size Large -Dock Bottom -Lock
+Set-BoxstarterTaskbarOptions -AlwaysShowIconsOff
 
 ##########################################################################
 # Power settings
 ##########################################################################
 
-if($env:UserName -ne "WDAGUtilityAccount") { # Can't configure this on Sandbox
+if ($env:UserName -ne "WDAGUtilityAccount") {
+    # Can't configure this on Sandbox
     powercfg /change monitor-timeout-ac 0 # Don't turn off monitor
     powercfg /change standby-timeout-ac 0 # Don't ever sleep
 }
