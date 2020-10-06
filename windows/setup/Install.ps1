@@ -1,10 +1,10 @@
-[CmdletBinding(DefaultParameterSetName='Prereqs')]
+[CmdletBinding(DefaultParameterSetName = 'Prereqs')]
 Param(
-    [Parameter(ParameterSetName='Prereqs')]
+    [Parameter(ParameterSetName = 'Prereqs')]
     [switch]$Prereqs,
-    [Parameter(ParameterSetName='Prereqs')]
+    [Parameter(ParameterSetName = 'Prereqs')]
     [switch]$Docker,
-    [Parameter(ParameterSetName='Software')]
+    [Parameter(ParameterSetName = 'Software')]
     [switch]$Apps
 )
 
@@ -32,7 +32,7 @@ if ($Prereqs.IsPresent) {
 }
 if ($Apps.IsPresent) {
     Install-BoxstarterPackage (Join-Path $PSScriptRoot "Steps/Apps.ps1")
-    . (Join-Path $PSScriptRoot "packages/Install.ps1")
+    #. (Join-Path $PSScriptRoot "packages/Install.ps1")
     RefreshEnv
 }
 if ($Docker.IsPresent) {
