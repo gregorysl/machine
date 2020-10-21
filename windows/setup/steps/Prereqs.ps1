@@ -42,8 +42,8 @@ Disable-GameBarTips
 
 Set-ItemProperty -Path "HKLM:SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Type DWord -Value 1
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowHiddenFilesFoldersDrives -EnableShowFullPathInTitleBar 
-Set-BoxstarterTaskbarOptions -Size Large -Dock Bottom -Lock
-Set-BoxstarterTaskbarOptions -AlwaysShowIconsOff
+Set-TaskbarOptions -Size Large -Dock Bottom -Lock
+Set-TaskbarOptions -AlwaysShowIconsOff
 
 ##########################################################################
 # Power settings
